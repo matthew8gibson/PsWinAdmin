@@ -103,6 +103,14 @@ function Get-DsRegCmdStatus {
             
             # Next import a property name and value until we get to the 'end of section' line
             for ($j = $CurrentSectionLine; $thisLine -notmatch $ptnEndOfSection; $j++) {
+
+                #Write-Host "thisLine: $thisLine"
+                ## Adding the next line to ensure the loops ends.  just t-shooting
+                #Write-Host "Check This Line value:  $thisLine"
+                if ($thisLine -eq 'For more information, please visit https://www.microsoft.com/aadjerrors') {
+                    #Write-debug "End of Output Break"
+                    break; 
+                }
                 
                 if ($thisLine.Trim()) {
 
